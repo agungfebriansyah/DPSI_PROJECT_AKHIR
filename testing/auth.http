@@ -1,0 +1,130 @@
+### Register a new Dosen
+POST https://agungfebriansyah-production.up.railway.app/auth/register
+Content-Type: application/json
+
+{
+  "role": "dosen",
+  "NIDN": "12345678",
+  "username":"dosengans",
+  "Nama": "Dosen1",
+  "BidangKeahlian": "Informatika",
+  "Email": "dosen1@example.com",
+  "password": "password123"
+}
+
+### Register a new Mahasiswa
+POST https://agungfebriansyah-production.up.railway.app/auth/register
+Content-Type: application/json
+
+{
+  "role": "mahasiswa",
+  "NIM": "210112233",
+  "Nama": "Mahasiswa1",
+  "username":"mahasiswagans",
+  "Jurusan": "Teknik Informatika",
+  "Kelas": "TI-1A",
+  "Email": "mahasiswa1@example.com",
+  "password": "password123"
+}
+
+### Register a new Admin
+POST https://agungfebriansyah-production.up.railway.app/auth/register
+Content-Type: application/json
+
+{
+  "role": "admin",
+  "username":"admingans",
+  "password": "password123"
+}
+
+### Login as Dosen
+POST https://agungfebriansyah-production.up.railway.app/auth/login
+Content-Type: application/json
+
+{
+  "username":"dosengans",
+  "password": "password123"
+}
+
+### Login as Mahasiswa
+POST https://agungfebriansyah-production.up.railway.app/auth/login
+Content-Type: application/json
+
+{
+  "username":"mahasiswagans",
+  "password": "password123"
+}
+
+### Login as Admin
+POST https://agungfebriansyah-production.up.railway.app/auth/login
+Content-Type: application/json
+
+{
+  "username":"admingans",
+  "password": "password123"
+}
+
+### Create a new MataKuliah
+POST https://agungfebriansyah-production.up.railway.app/matakuliah
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBRE0xIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzIxODc3OTMyLCJleHAiOjE3MjE4ODE1MzJ9.EE3oSecjXR1_ePpfweHY3ets2mBzn95JP0DTz63QAgM
+
+{
+  "KodeMataKuliah": "CS101",
+  "NamaMataKuliah": "Learning To Be a PRO",
+  "SKS": 3
+}
+
+### Get all MataKuliah
+GET https://agungfebriansyah-production.up.railway.app/matakuliah
+Authorization: Bearer <Paste Token Admin>
+
+### Get MataKuliah by KodeMataKuliah
+GET https://agungfebriansyah-production.up.railway.app/matakuliah/CS101
+Authorization: Bearer <Paste Token Admin>
+
+### Update MataKuliah
+PUT https://agungfebriansyah-production.up.railway.app/matakuliah/CS101
+Content-Type: application/json
+Authorization: Bearer <Paste Token Admin>
+
+{
+  "NamaMataKuliah": "Introduction to CS",
+  "SKS": 4
+}
+
+### Get all students
+GET https://agungfebriansyah-production.up.railway.app/dosen/students
+Authorization: Bearer <Paste Token Dosen>
+
+### Enter grades
+POST https://agungfebriansyah-production.up.railway.app/dosen/grades
+Content-Type: application/json
+Authorization: Bearer <Paste Token Dosen>
+
+{
+  "NIMMahasiswa": "210112233",
+  "KodeMataKuliah": "MK001",
+  "NilaiAbsensi": 85,
+  "NilaiTugas": 90,
+  "NilaiUTS": 88,
+  "NilaiUAS": 92,
+  "NilaiAkhir": 90
+}
+
+### Update grades
+PUT https://agungfebriansyah-production.up.railway.app/dosen/grades/1
+Content-Type: application/json
+Authorization: Bearer <Paste Token Dosen>
+
+{
+  "NilaiAbsensi": 90,
+  "NilaiTugas": 85,
+  "NilaiUTS": 80,
+  "NilaiUAS": 85,
+  "NilaiAkhir": 83
+}
+
+### Delete grades
+DELETE https://agungfebriansyah-production.up.railway.app/dosen/grades/1
+Authorization: Bearer <Paste Token Dosen>
